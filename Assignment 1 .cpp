@@ -30,6 +30,9 @@
 *   Allocation Functions
 *
 * Version number 1.00
+*
+* Program 1: Carson, Bonnie
+* Program 2: Robyn, David, Paul
 *\
 
 #include<iostream>
