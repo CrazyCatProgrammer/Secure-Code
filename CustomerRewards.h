@@ -17,6 +17,8 @@ public:
 	CustomerRewards();
 	CustomerRewards(Customer input);
 	~CustomerRewards();
+	CustomerRewards(const CustomerRewards& source); //copy construcor
+	CustomerRewards& operator =(const CustomerRewards& source); //assignemnt
 	//Member functions
 		//getters & setters
 	int getUsed() {return used;}
