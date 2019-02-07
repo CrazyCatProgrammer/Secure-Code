@@ -41,7 +41,7 @@ CustomerRewards & CustomerRewards::operator=(const CustomerRewards & source)
 	return *this;
 }
 
-CustomerRewards::free()
+void CustomerRewards::free()
 {
 	if(data != nullptr) //NEVER delete null
 	{
