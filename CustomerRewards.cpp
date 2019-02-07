@@ -50,7 +50,7 @@ CustomerRewards::free()
 	}
 }
 
-CustomerRewards::addMemory(int slots)
+void CustomerRewards::addMemory(int slots)
 {
 	max += slots;
 	Customer* tmpptr = new Customer[max];
@@ -58,7 +58,7 @@ CustomerRewards::addMemory(int slots)
 	free();
 	data = tmpptr;
 }
-CustomerRewards::cleanup()
+void CustomerRewards::cleanup()
 {
 	max = used;
 	Customer* tmpptr = new Customer[max];
@@ -67,14 +67,14 @@ CustomerRewards::cleanup()
 	data = tmpptr;
 }
 
-CustomerRewards::add(Customer input)
+void CustomerRewards::add(Customer input)
 {
 	if(used >= max)
 		addMemory(3) //adding 3 each time memory is needed, number can be changed
 	data[used] = input;
 	used++;
 
-CustomerRewards::removeOne(int index)
+void CustomerRewards::removeOne(int index)
 {
 	if(index >= used) //if index out of bounds, exit
 		return;
@@ -85,7 +85,7 @@ CustomerRewards::removeOne(int index)
 	
 }
 
-CustomerRewards::printOne(int index)
+void CustomerRewards::printOne(int index)
 {
 	if(index < used)
 		data[index].printAll();
@@ -94,7 +94,7 @@ CustomerRewards::printOne(int index)
 	
 }
 
-CustomerRewards::printBest()
+void CustomerRewards::printBest()
 {
 	Customer bestCustomer;
 	bestCustomer.setPrice(0);
@@ -102,7 +102,7 @@ CustomerRewards::printBest()
 	
 }
 
-CustomerRewards::printAll()
+void CustomerRewards::printAll()
 {
 	for(int i = 0; i < used; i++)
 		data[i].printAll();
