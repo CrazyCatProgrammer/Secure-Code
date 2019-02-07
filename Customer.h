@@ -14,12 +14,12 @@ class Customer {
 public:
 	//Constructors and Destructors
 	Customer();
-	Customer(std::string name = "", int price = 0); //make sure the 0 sentinel value is in constructor logic
+	Customer(std::string name = "", double price = 0); //make sure the 0 sentinel value is in constructor logic
 	//No destructor needed as no heap memory used
   //Member Functions
 		//getters & setters
 	std::string getName() {return name;}
-	int getPrice() {return price;}
+	double getPrice() {return price;}
 	void setName(std::string input);
 	void setPrice(int input);
 		//prints
@@ -28,7 +28,7 @@ public:
 	void printAll();
 
 private:
-	int price;
+	double price;
 	std::string name;
 };
 
