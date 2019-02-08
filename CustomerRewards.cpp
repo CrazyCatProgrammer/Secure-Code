@@ -97,9 +97,17 @@ void CustomerRewards::printOne(int index)
 void CustomerRewards::printBest()
 {
 	Customer bestCustomer;
-	bestCustomer.setPrice(0);
-	
-	
+	bestCustomer.setName("No Customers"); //if there are no customers with any price >= 0, it will show there is no customers
+	bestCustomer.setPrice(0.0);
+	for (int i = 0; i < used; i++)
+	{
+		if (data[i].getPrice() >= bestCustomer.getPrice()) //Uses >= because most recent entry should have precedence over older entries for "best"
+		{												   //if current index is better than previous best...
+			bestCustomer.setName(data[i].getName());       //change info to match
+			bestCustomer.setPrice(data[i].getPrice());
+		}
+	}
+	bestCustomer.printAll();
 }
 
 void CustomerRewards::printAll()
