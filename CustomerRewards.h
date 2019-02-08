@@ -35,7 +35,7 @@ public:
 private:
 	int max; //max size of array
 	int used; //number of items in array
-	Customer* data[]; //made new class for data storage. Much easier
+	Customer* data; //made new class for data storage. Much easier
 	void free(); //private function to clear all memory as part of destructor
 	void addMemory(int slots); //private function to add memory to the array if full
 	void cleanup(); //private function used when removing items to remove excess unused memory
