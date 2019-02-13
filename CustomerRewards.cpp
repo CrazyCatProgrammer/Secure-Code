@@ -20,7 +20,7 @@ CustomerRewards::~CustomerRewards()
 	free();
 }
 
-CustomerRewards::CustomerRewards(const CustomerRewards & source)
+CustomerRewards::CustomerRewards(const CustomerRewards& source)
 {
 	used = source.used;
 	max = source.max;
@@ -43,10 +43,10 @@ CustomerRewards & CustomerRewards::operator=(const CustomerRewards & source)
 
 void CustomerRewards::free()
 {
-	if(data != nullptr) //NEVER delete null
+	if (data != nullptr) //NEVER delete null
 	{
 		delete[] data;
-		data = nullptr; 
+		data = nullptr;
 	}
 }
 
@@ -54,7 +54,7 @@ void CustomerRewards::addMemory(int slots)
 {
 	max += slots;
 	Customer* tmpptr = new Customer[max];
-	std::copy(data, data + used, tmpptr;
+	std::copy(data, data + used, tmpptr);
 	free();
 	data = tmpptr;
 }
@@ -62,56 +62,56 @@ void CustomerRewards::cleanup()
 {
 	max = used;
 	Customer* tmpptr = new Customer[max];
-	std::copy(data, data + used, tmpptr;
+	std::copy(data, data + used, tmpptr);
 	free();
 	data = tmpptr;
 }
 
 void CustomerRewards::add(Customer input)
 {
-	if(used >= max)
-		addMemory(3) //adding 3 each time memory is needed, number can be changed
+	if (used >= max)
+		addMemory(3); //adding 3 each time memory is needed, number can be changed
 	data[used] = input;
 	used++;
-
-void CustomerRewards::removeOne(int index)
-{
-	if(index >= used) //if index out of bounds, exit
-		return;
-	data[index-1] = data[used]; //used it at the end
-	used--; //flag last slot for reuse
-	if (max > 3 + used) //check if too much excess memory is used
-		cleanup();
-	
 }
-
-void CustomerRewards::printOne(int index)
-{
-	if(index < used)
-		data[index].printAll();
-	else
-		std::cout<<"Index Error.";
-	
-}
-
-void CustomerRewards::printBest()
-{
-	Customer bestCustomer;
-	bestCustomer.setName("No Customers"); //if there are no customers with any price >= 0, it will show there is no customers
-	bestCustomer.setPrice(0.0);
-	for (int i = 0; i < used; i++)
+	void CustomerRewards::removeOne(int index)
 	{
-		if (data[i].getPrice() >= bestCustomer.getPrice()) //Uses >= because most recent entry should have precedence over older entries for "best"
-		{												   //if current index is better than previous best...
-			bestCustomer.setName(data[i].getName());       //change info to match
-			bestCustomer.setPrice(data[i].getPrice());
-		}
-	}
-	bestCustomer.printAll();
-}
+		if (index >= used) //if index out of bounds, exit
+			return;
+		data[index - 1] = data[used]; //used it at the end
+		used--; //flag last slot for reuse
+		if (max > 3 + used) //check if too much excess memory is used
+			cleanup();
 
-void CustomerRewards::printAll()
-{
-	for(int i = 0; i < used; i++)
-		data[i].printAll();
-}
+	}
+
+	void CustomerRewards::printOne(int index)
+	{
+		if (index < used)
+			data[index].printAll();
+		else
+			std::cout << "Index Error.";
+
+	}
+
+	void CustomerRewards::printBest()
+	{
+		Customer bestCustomer; //where did bestCustomer come from?
+		bestCustomer.setName("No Customers"); //if there are no customers with any price >= 0, it will show there is no customers
+		bestCustomer.setPrice(0.0);
+		for (int i = 0; i < used; i++)
+		{
+			if (data[i].getPrice() >= bestCustomer.getPrice()) //Uses >= because most recent entry should have precedence over older entries for "best"
+			{												   //if current index is better than previous best...
+				bestCustomer.setName(data[i].getName());       //change info to match
+				bestCustomer.setPrice(data[i].getPrice());
+			}
+		}
+		bestCustomer.printAll();
+	}
+
+	void CustomerRewards::printAll()
+	{
+		for (int i = 0; i < used; i++)
+			data[i].printAll();
+	}

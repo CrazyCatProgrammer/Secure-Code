@@ -1,14 +1,19 @@
-
-#include "stdafx.h"
+/*
+ * ProjectMain.cpp
+ *
+ *  Created on:
+ *      Author: 
+ *		Edited by: Robyn Collins & David Bonney
+ */
 #include <iostream>
 #include <string>
 
-using namespace std;
+using namespace std; //I know we imported this but for safeties sake I added std to cin and cout anyways - Robyn.
 
 class NameAmount
 {
 public:
-	string CustomerNameArray[10];
+	std::string CustomerNameArray[10];
 	int CustomerAmountArray[10];
 	int NumberOfCustomers = 0;
 
@@ -19,24 +24,14 @@ void ShowData(NameAmount);
 
 
 
-/*
-class NameAmount 
+void showData(NameAmount accounts)
 {
-	public:
-		string CustomerNameArray[10];
-		int CustomerAmountArray[10];
-		int NumberOfCustomers = 10;
-
-};
-*/
-void showData(NameAmount accounts) 
-{
-	cout << "Showing Customer Data";
-	for (int i = 0; i > accounts.NumberOfCustomers; i++) 
+	std::cout << "Showing Customer Data";
+	for (int i = 0; i > accounts.NumberOfCustomers; i++)
 	{
-		cout << "Name:		Amount:\n\n";
-		cout << accounts.CustomerNameArray[i].data() << "		";
-		cout << accounts.CustomerAmountArray[i] << "\n";
+		std::cout << "Name:		Amount:\n\n";
+		std::cout << accounts.CustomerNameArray[i].data() << "		";
+		std::cout << accounts.CustomerAmountArray[i] << "\n";
 
 	}
 }
@@ -44,14 +39,14 @@ void showData(NameAmount accounts)
 void AskforData(NameAmount accounts)
 {
 	int stop;
-	cout << "\nplease enter customer data\n"
-	<< "please enter customer data below\n\n";
-	cout << "enter amount\n";
-	cin >> accounts.CustomerAmountArray[accounts.NumberOfCustomers];
-	cout << "enter name\n";
-	cin >> accounts.CustomerNameArray[accounts.NumberOfCustomers];
+	std::cout << "\nplease enter customer data\n"
+		<< "please enter customer data below\n\n";
+	std::cout << "enter amount\n";
+	std::cin >> accounts.CustomerAmountArray[accounts.NumberOfCustomers];
+	std::cout << "enter name\n";
+	std::cin >> accounts.CustomerNameArray[accounts.NumberOfCustomers];
 
-	cout << accounts.CustomerNameArray[accounts.NumberOfCustomers] << " and " << accounts.CustomerAmountArray[accounts.NumberOfCustomers] << "\n";
+	std::cout << accounts.CustomerNameArray[accounts.NumberOfCustomers] << " and " << accounts.CustomerAmountArray[accounts.NumberOfCustomers] << "\n";
 	accounts.NumberOfCustomers++;
 
 }
@@ -59,10 +54,10 @@ void AskforData(NameAmount accounts)
 int main() {
 
 	NameAmount accounts;
-	
+
 	int input = 10;
-	cout << "hello this app is our costumer database, to enter a new customer press 1. to see a list of costumers press 2\n\n";
-	cin >> input;
+	std::cout << "hello this app is our costumer database, to enter a new customer press 1. to see a list of costumers press 2\n\n";
+	std::cin >> input;
 	if (input == 1)
 	{
 		AskforData(accounts);
@@ -75,4 +70,5 @@ int main() {
 
 }
 
-
+//runtime protection strategies. https://stackoverflow.com/questions/8015355/are-c-strings-and-streams-buffer-overflow-safe
+// http://www.informit.com/articles/article.aspx?p=2036582&seqNum=6

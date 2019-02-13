@@ -1,5 +1,8 @@
 #include "Customer.h"
 
+Customer::Customer(std::string name, double price)
+{
+}
 
 void Customer::setName(std::string input)
 {

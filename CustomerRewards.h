@@ -3,6 +3,7 @@
  *
  *  Created on: Feb 1, 2019
  *      Author: David Bonney
+ *		Edited by: Robyn Collins
  */
 
 #ifndef CUSTOMERREWARDS_H_
@@ -14,16 +15,16 @@
 class CustomerRewards {
 public:
 	//Constructors & destructors
-	CustomerRewards();
-	CustomerRewards(Customer input);
+	CustomerRewards(); // default?
+	CustomerRewards(Customer input); //default?
 	~CustomerRewards();
 	CustomerRewards(const CustomerRewards& source); //copy construcor
 	CustomerRewards& operator =(const CustomerRewards& source); //assignemnt
 	//Member functions
 		//getters & setters
-	int getUsed() {return used;}
-	int getMax() {return max;}
-		//other member functions
+	int getUsed() { return used; }
+	int getMax() { return max; }
+	//other member functions
 	void add(Customer input);
 	void removeOne(int index);
 	void printOne(int index);

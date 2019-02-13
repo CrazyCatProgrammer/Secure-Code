@@ -3,6 +3,7 @@
  *
  *  Created on: Feb 3, 2019
  *      Author: David Bonney
+ *		Edited by: Robyn Collins
  */
 
 #ifndef CUSTOMER_H_
@@ -15,7 +16,7 @@ class Customer {
 public:
 	//Constructors and Destructors
 
-	Customer();
+
 	Customer(std::string name = "", double price = 0); //make sure the 0 sentinel value is in constructor logic
 	//No destructor needed as no heap memory used
   //Member Functions
@@ -23,8 +24,8 @@ public:
 
 	std::string getName() { return name; }
 	double getPrice() { return price; }
-	std::string getName() {return name;}
-	double getPrice() {return price;}
+//	std::string getName() { return name; }
+//	double getPrice() { return price; }
 	void setName(std::string input);
 	void setPrice(int input);
 	//prints
