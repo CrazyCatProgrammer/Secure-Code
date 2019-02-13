@@ -3,7 +3,6 @@
  *
  *  Created on: Feb 1, 2019
  *      Author: David Bonney
- *		Edited by: Robyn Collins
  */
 
 #ifndef CUSTOMERREWARDS_H_
@@ -15,8 +14,8 @@
 class CustomerRewards {
 public:
 	//Constructors & destructors
-	CustomerRewards(); // default?
-	CustomerRewards(Customer input); //default?
+	CustomerRewards();
+	CustomerRewards(Customer input);
 	~CustomerRewards();
 	CustomerRewards(const CustomerRewards& source); //copy construcor
 	CustomerRewards& operator =(const CustomerRewards& source); //assignemnt
@@ -30,8 +29,6 @@ public:
 	void printOne(int index);
 	void printBest(); //prints "best" customer, however it's defined within the function
 	void printAll();
-
-
 
 private:
 	int max; //max size of array
