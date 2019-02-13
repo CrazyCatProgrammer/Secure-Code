@@ -36,47 +36,32 @@
 *\
 
 #define fstack-protector-all //stack canary turned on for all functions. A bit overkill, but works.
-//#include "stdafx.h"
+#include "Customer.h"
+#include "CustomerRewards.h"
 #include <iostream>
 #include <string>
 
 using namespace std;
 
-class NameAmount
+void AskforData(CustomerRewards);
+void ShowData(CustomerRewards);
+void FlushInputBuffer(CustomerRewards);
+
+void FlushInputBuffer(CustomerRewards)
 {
-public:
-	string CustomerNameArray[10];
-	int CustomerAmountArray[10];
-	int NumberOfCustomers = 0;
-
-};
-
-void AskforData(NameAmount);
-void ShowData(NameAmount);
-void FlushInputBuffer(NameAmount);
-
-
-
-void FlushInputBuffer(NameAmount)
-{
-	// needs work 
-	int character
+	// needs work
+	int character;
 	char character;
 	while ((character = getchar()) != '\n' && character != EOF);
 }
-void showData(NameAmount accounts) 
+void showData(CustomerRewards accounts) //reworked by David
 {
 	cout << "Showing Customer Data";
-	for (int i = 0; i > accounts.NumberOfCustomers; i++) 
-	{
-		cout << "Name:		Amount:\n\n";
-		cout << accounts.CustomerNameArray[i].data() << "		";
-		cout << accounts.CustomerAmountArray[i] << "\n";
-
-	}
+	accounts.printAll();
+	cout << "Your best Customer is:\n";
+	accounts.printBest();
 }
-
-void AskforData(NameAmount accounts)
+void AskforData(CustomerRewards accounts)
 {
 	int stop;
 	cout << "\nplease enter customer data\n"
@@ -87,29 +72,37 @@ void AskforData(NameAmount accounts)
 	cin >> accounts.CustomerAmountArray[accounts.NumberOfCustomers];
 	cout << "enter name\n";
 	cin >> accounts.CustomerNameArray[accounts.NumberOfCustomers];
-
 	cout << accounts.CustomerNameArray[accounts.NumberOfCustomers] << " and " << accounts.CustomerAmountArray[accounts.NumberOfCustomers] << "\n";
 	accounts.NumberOfCustomers++;
-
 }
-
 int main() {
+	CustomerRewards accounts;
 
-	NameAmount accounts;
-	
 	int input = 10;
-	cout << "hello this app is our costumer database, to enter a new customer press 1. to see a list of costumers press 2\n\n";
-	cin >> input;
-	if (input == 1)
-	{
-		AskforData(accounts);
+	int errorCount = 0;
+	while (errorCount < 3) {
+		cout << "hello this app is our costumer database, to enter a new customer press 1. to see a list of costumers press 2\n\nPress 0 to exit.";
+		cin >> input;
+		if (input == 1)
+		{
+			AskforData(accounts);
+		}
+		else if (input == 2)
+		{
+			showData(accounts);
+		}
+		else if (input == 0)
+		{
+			return 0; //0 is a proper exit
+		}
+		else //if anything unexpected, post error thing
+		{
+			errorCount++;
+			cout << "There was an error with that input, please try again.";
+		}
 	}
-	else if (input == 2);
-	{
-		showData(accounts);
-	}
-	return 0;
-
+	return -1; //-1 indicated bad exit
 }
+
 
 
