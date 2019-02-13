@@ -35,7 +35,7 @@
 * Program 2: Robyn, David, Paul
 *\
 
-
+#define fstack-protector-all //stack canary turned on for all functions. A bit overkill, but works.
 //#include "stdafx.h"
 #include <iostream>
 #include <string>
