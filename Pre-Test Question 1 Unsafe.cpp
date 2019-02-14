@@ -24,7 +24,6 @@ using namespace std;
 int generate(int s[20], const int l);
 void print(int s[20], const int l);
 int sort(int s[20], const int l);
-string intToStrong(int s[20], const int l);
 
 //create and destroy
 
@@ -39,14 +38,20 @@ int main()
     //setting constant size for array
     const int l = 20;
     int s[l];
+    
     //static function pointer for print
     static void(*funcPrint)(int s[20], const int l);
     funcPrint = &print;
     
-    s[l] = createArray(l);
+    //creating array
+    s[l] = generate(s, l);
+    //print original array unsorted
     print(s, l);
+    //sort array
     sort(s, l);
+    //print array sorted
     print(s, l); 
+    //set array to null
     destroyArray(s[l], l);
     
     //ending program
@@ -59,6 +64,31 @@ int main()
 }
 
 /////////////////////////////////////////// Functions ///////////////////////////////////////////
+
+//create array and calls generate function
+// l is length of array to create
+
+int createArray(const int l)
+{
+    cout << "Creating Array of " << l << " length...\n";
+    int s[20];
+    
+    cout << "Generating numbers and putting into array...\n";
+    s[l] = generate(s, l);
+
+    return s[l];
+}
+
+
+// sets array to null
+// in is array to set null
+
+int destroyArray(int in, int l)
+{
+    cout << "Setting array to null...\n";
+    in = NULL;
+    return in;
+}
 
 
 // fills the array with numbers between 0 and 99
@@ -80,26 +110,16 @@ int generate(int s[20], const int l)
 // Prints array given
 // s is array to be print, l is length of array
 
-void print(char s[20], const int l)
+void print(int s[20], const int l)
 {
-
     cout << "Printing...\n";
     
     for (int i = 0; i <= l; i++)
     {
-        if (s[i] == NULL)
-
-        {
-            //skip nulls - end of the character
-        }
-        else
-        {
-            cout << s[i] << " ";
-        }
+        cout << s[i] << " ";
     } 
     
     cout << "\nEnd Print Statement.\n";
-
 }
 
 
@@ -111,36 +131,4 @@ int sort(int s[20], const int l)
     cout << "Sorting array...\n";
     sort(s, s + l);
     return s[l];
-}
-
-//turns int array into string array
-//is is int array, l is length
-string intToStrong(int s[20], const int l)
-{
-    
-}
-
-//create and destroy arrays
-// l is length of array to create
-
-int createArray(const int l)
-{
-    cout << "Creating Array of " << l << " length...\n";
-    int s[20];
-    
-    cout << "Generating numbers and putting into array...\n";
-    generate(s, l);
-
-    return s[l];
-}
-
-
-// sets array to null
-// in is array to set null
-
-int destroyArray(char in, int l)
-{
-    cout << "Setting array to null...\n";
-    in = NULL;
-    return in;
 }
