@@ -29,6 +29,7 @@ public:
 	void printOne(int index);
 	void printBest(); //prints "best" customer, however it's defined within the function
 	void printAll();
+	Customer operator [] (int const &num);
 
 private:
 	int max; //max size of array
