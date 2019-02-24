@@ -113,3 +113,10 @@ void CustomerRewards::printAll()
 	for (int i = 0; i < used; i++)
 		data[i].printAll();
 }
+
+Customer CustomerRewards::operator[](int const & num)
+{
+	if (num < used)
+		return data[num];
+	return Customer();
+}
