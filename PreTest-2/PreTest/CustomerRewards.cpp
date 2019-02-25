@@ -4,14 +4,14 @@ CustomerRewards::CustomerRewards()
 {
 	max = 0; //starting at 0, will add more during methods
 	used = 0;
-	data = nullptr;
+	data = NULL;
 }
 
 CustomerRewards::CustomerRewards(Customer input)
 {
 	max = 0;
 	used = 0;
-	data = nullptr;
+	data = NULL;
 	add(input);
 }
 
@@ -43,10 +43,10 @@ CustomerRewards & CustomerRewards::operator=(const CustomerRewards & source)
 
 void CustomerRewards::free()
 {
-	if (data != nullptr) //NEVER delete null
+	if (data != NULL) //NEVER delete null
 	{
 		delete[] data;
-		data = nullptr;
+		data = NULL;
 	}
 }
 
@@ -78,7 +78,7 @@ void CustomerRewards::removeOne(int index)
 {
 	if (index >= used) //if index out of bounds, exit
 		return;
-	data[index - 1] = data[used]; //used it at the end
+	data[index] = data[used]; //used it at the end
 	used--; //flag last slot for reuse
 	if (max > 3 + used) //check if too much excess memory is used
 		cleanup();
@@ -110,13 +110,16 @@ void CustomerRewards::printBest()
 
 void CustomerRewards::printAll()
 {
-	for (int i = 0; i < used; i++)
+	for (int i = 0; i < used; i++) {
+		std::cout << "Customer " << i+1 << ":" << std::endl;
 		data[i].printAll();
+	}
 }
 
-Customer CustomerRewards::operator[](int const & num)
+Customer CustomerRewards::operator[](int const & num) 
 {
 	if (num < used)
 		return data[num];
 	return Customer();
 }
+
