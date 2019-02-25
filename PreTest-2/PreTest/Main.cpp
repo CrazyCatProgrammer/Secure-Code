@@ -102,6 +102,7 @@ void ModifyCustomer(CustomerRewards &accounts) { //Added 2/22 by David
 	int custNum = 0;
 	unsigned int priceToModify = 0;
 	int negPrice = 0;
+	Customer tempCust;
 	while (custNum <= 0 || custNum > accounts.getUsed()) { //check if selected customer to modify is within the list
 		while (input < 49 || input > 57) { //check if inputted value falls between 1 and 9 in ASCII codes
 			cout << "Which customer do you want to modify?";
@@ -130,15 +131,18 @@ void ModifyCustomer(CustomerRewards &accounts) { //Added 2/22 by David
 			cout << "\nNumber too big! Please try a smaller number.\n";
 		}
 	}
+	tempCust = accounts[custNum];
 	if (input == '1')
-		accounts[custNum].convertPrice(priceToModify);
+		tempCust.convertPrice(priceToModify);
 	else if (input == '2') {
 		if (priceToModify <= 2147483647) { //check to ensure price is in range
 			negPrice = priceToModify; //implicit conversion from unsigned to signed
 			negPrice = -1 * negPrice; //make price negative to pass in
-			accounts[custNum].convertPrice(negPrice);
+			tempCust.convertPrice(negPrice);
 		}
 	}
+	accounts.removeOne(custNum);
+	accounts.add(tempCust);
 }
 
 int main() {
