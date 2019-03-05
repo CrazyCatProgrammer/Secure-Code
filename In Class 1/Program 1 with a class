@@ -78,7 +78,7 @@ void generate(Class& Arg)
 	{
 		int max = 10;
 		int min = 2;
-		num = num - i * min / max * i;
+		num = num = (i* (max - (i* num)) * (min + (i * num)) / ((max * num) / i) / 10000000);
 		Arg.array[i] = num;
 		
 		
