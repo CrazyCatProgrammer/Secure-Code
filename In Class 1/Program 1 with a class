@@ -1,0 +1,118 @@
+//============================================================================
+//
+// Name        : Pretest_Question1.cpp
+// Author      : Paul Grubb, Carson Sharpless
+// Version     : 1.0.0
+// Date        : February 7th, 2019
+// Description : generates a sequence of twenty random values between 0 and 99 in an array.
+//				 Print the sequence, sort the array, and print the sorted sequence.
+// Functions   : int generate(int string[20 length], constant int length) - Generates numbers to fill array
+//               void print(int string[20 length], constant int length) - prints out array
+//               int sort(int string[20 length], constant int length) - sorts numbers in array
+//               int destroyArray(int string[20 length], constant int length) - sets array to NULL to erase data
+//
+//============================================================================
+
+
+#define fstackprotectorall //stack canary 
+#include "stdafx.h"
+#include <iostream>
+#include <stdio.h>
+#include <cmath>
+#include <math.h>
+using namespace std;
+
+
+/////////////////////////////////////////// Function Call ///////////////////////////////////////////
+
+
+
+class Class
+{
+public:
+	int array[20];
+};
+
+void generate(Class&);
+void print(Class&);
+void sort(Class&);
+int destroyArray(Class&);
+
+/////////////////////////////////////////// Main ///////////////////////////////////////////
+
+int main()
+{
+	Class Agr;
+	destroyArray(Agr);
+	generate(Agr);
+	print(Agr);
+	sort(Agr);
+	print(Agr);
+	destroyArray(Agr);
+
+
+
+	//ending program
+	//character to end program
+	cout << "End Program - Press any key to continue... ";
+
+	return 0;
+
+}
+
+/////////////////////////////////////////// Functions ///////////////////////////////////////////
+int destroyArray(Class& Arg) {
+	for (int i = 0; i < 20; i++) { Arg.array[i] = 0; }
+	return 0;
+}
+
+// fills the array with numbers between 0 and 99
+// s is the array to be filled, l is length of the array
+
+void generate(Class& Arg)
+{
+	cout << "Generating numbers and putting into array...\n";
+	int num = 1;
+	for (int i = 0; i < 20; i++)
+	{
+		num = rand() % 20 + 1;
+		Arg.array[i] = num;
+	}
+}
+
+
+// Prints array given
+// s is array to be print, l is length of array
+
+void print(Class& Arg)
+{
+	cout << "Printing...\n";
+
+	for (int i = 0; i < 20; i++)
+	{
+		cout << Arg.array[i] << " \n";
+	}
+
+	cout << "\nEnd Print Statement.\n";
+}
+
+
+// calls sort algorithm to sort array
+// s is array to sort, l is length of array
+
+void sort(Class& Arg)
+{
+		for (int i = 0; i <= 19; i++)
+		{
+			for (int j = i + 1; j <= 20; j++)
+			{
+				int temp = 0;
+				if (Arg.array[i] < Arg.array[j])
+				{
+					temp = Arg.array[i];
+					Arg.array[i] = Arg.array[j];
+					Arg.array[j] = temp;
+				}
+			}
+		}
+	}
