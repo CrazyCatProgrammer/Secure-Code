@@ -1,8 +1,10 @@
 /*
  * CustomerRewards.h
  *
- *  Created on: Feb 1, 2019
- *      Author: David Bonney
+ *  Last Edited: March 5, 2019
+ *
+ *      Author: David Bonney, Robyn Collins
+ *		New: Pre and Post conditions added by Robyn
  */
 
 #ifndef CUSTOMERREWARDS_H_
@@ -24,7 +26,11 @@ public:
 	int getUsed() { return used; }
 	int getMax() { return max; }
 	//other member functions
+	//pre condition, get array of characters.
+	//post condition, save array of characters.
 	void add(Customer input);
+	//precondition, index int
+	//postcondition, null
 	void removeOne(int index);
 	void printOne(int index);
 	void printBest(); //prints "best" customer, however it's defined within the function
