@@ -103,28 +103,30 @@ void ModifyCustomer(CustomerRewards &accounts) { //Added 2/22 by David
 	unsigned int priceToModify = 0;
 	int negPrice = 0;
 	Customer tempCust;
+	
 	while (custNum <= 0 || custNum > accounts.getUsed()) { //check if selected customer to modify is within the list
 		while (input < 49 || input > 57) { //check if inputted value falls between 1 and 9 in ASCII codes, also checking in range.
 			cout << "Which customer do you want to modify?";
 			cin.get(input); //will only get 1 character
 			cin.ignore(1000, '\n');
 		}
-		custNum = (input - '0'); //subtract char value of 0 to make the cust num into an integer
+		custNum = (input - '0'); //subtract char value of 0 to make the cust num into an integer - customer 10?
 	}
 	custNum--; //reduce by 1 to prevent an off-by-one error later
+	
 	input = 48; // reset to ASCII '0'
 	while (input < 49 || input > 50) { //check if inputted value is 1 or 2 in ASCII codes
 		cout << "Do you want to add (Input 1) or subtract (Input 2) a number from the customer?\n";
 		cin.get(input); //will only get 1 character
 		cin.ignore(1000, '\n');
 	}
+	
 	while (priceToModify == 0) {
 		cout << "Please enter a price to add or subtract. Enter price as a negative value to subtract.\n";
 		fgets(tempPrice, 100, stdin);
-		try {
+		try { 
 			priceToModify = stoul(tempPrice, nullptr, 0); // will throw exceptions based on bad values, transforming tempPrice into an int
-
-
+			//stoul = string to unsigned long
 		}
 		catch (invalid_argument) {
 			cout << "\nInvalid Input, please try again.\n";
@@ -133,6 +135,7 @@ void ModifyCustomer(CustomerRewards &accounts) { //Added 2/22 by David
 			cout << "\nNumber too big! Please try a smaller number.\n";
 		}
 	}
+	
 	tempCust = accounts[custNum]; //grabs customer at the array location and stores in variable tempCust
 	if (input == '1')
 		tempCust.convertPrice(priceToModify); //call customer method to alter price from unsigned to signed.
