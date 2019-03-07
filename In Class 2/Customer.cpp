@@ -11,13 +11,30 @@ void Customer::convertPrice(int ChangedPrice) {
 	float tempFloat = static_cast<float>(ChangedPrice);
 	
 	float tempPrice = price + tempFloat;  //logic checking by Bonnie Rogers
+	
+	//checking overflow
+	//checks to see if incoming number is positive and if addition is less than original incoming number or original price
+	if(tempFloat > 0 && tempPrice < tempFloat || tempPrice < getPrice()) 
+	{
+		std::cout << "Overflow error: Not changing price.";
+		return;
+	}
+	//check if incoming number is negative to check if addition is more than incoming number or original price
+	if(tempFloat < 0 && tempPrice > tempFloat || tempPrice > getPrice())
+	{
+		std::cout << "Overflow error: Not changing price.";
+		return;
+	}
+	
+	
 	if(tempPrice < 0)
 	{
-		cout << "Error: Price input causes price to be less than 0.\n";
+		std::cout << "Error: Price input causes price to be less than 0.\n";
+		return;
 	}
 	else
 	{
-		cout << "Setting customer price to " << tempPrice << "\n";
+		std::cout << "Setting customer price to " << tempPrice << "\n";
 		setPrice(tempPrice);
 	}
 }
