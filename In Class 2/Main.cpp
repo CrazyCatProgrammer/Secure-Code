@@ -93,18 +93,18 @@ void AskForData(CustomerRewards &accounts) {
 }
 
 
-//precondition: Enter a customer to modify
+//precondition: Enter a char customer to modify
 //postcondition: IF customer exsists in the list then modify the price
 void ModifyCustomer(CustomerRewards &accounts) { //Added 2/22 by David
 	//code to access modify from class goes here
 	char tempPrice[100]; //100 characters 
-	char input = 48;
-	int custNum = 0;
+	char input = 48; //initialize to ASCII '0'
+	int custNum = 0; 
 	unsigned int priceToModify = 0;
 	int negPrice = 0;
 	Customer tempCust;
 	while (custNum <= 0 || custNum > accounts.getUsed()) { //check if selected customer to modify is within the list
-		while (input < 49 || input > 57) { //check if inputted value falls between 1 and 9 in ASCII codes
+		while (input < 49 || input > 57) { //check if inputted value falls between 1 and 9 in ASCII codes, also checking in range.
 			cout << "Which customer do you want to modify?";
 			cin.get(input); //will only get 1 character
 			cin.ignore(1000, '\n');
@@ -112,7 +112,7 @@ void ModifyCustomer(CustomerRewards &accounts) { //Added 2/22 by David
 		custNum = (input - '0'); //subtract char value of 0 to make the cust num into an integer
 	}
 	custNum--; //reduce by 1 to prevent an off-by-one error later
-	input = 48;
+	input = 48; // reset to ASCII '0'
 	while (input < 49 || input > 50) { //check if inputted value is 1 or 2 in ASCII codes
 		cout << "Do you want to add (Input 1) or subtract (Input 2) a number from the customer?\n";
 		cin.get(input); //will only get 1 character
@@ -133,9 +133,9 @@ void ModifyCustomer(CustomerRewards &accounts) { //Added 2/22 by David
 			cout << "\nNumber too big! Please try a smaller number.\n";
 		}
 	}
-	tempCust = accounts[custNum];
+	tempCust = accounts[custNum]; //grabs customer at the array location and stores in variable tempCust
 	if (input == '1')
-		tempCust.convertPrice(priceToModify);
+		tempCust.convertPrice(priceToModify); //call customer method to alter price from unsigned to signed.
 	else if (input == '2') {
 		if (priceToModify <= 2147483647) { //check to ensure price is in range
 			negPrice = priceToModify; //implicit conversion from unsigned to signed
@@ -151,23 +151,22 @@ int main() {
 	CustomerRewards accounts;
 
 	char input = '3'; //initialize with an innocent value
-	int errorCount = 0;
-	while (errorCount < 3) {
+	int errorCount = 0; //set error count to zero 
+	while (errorCount < 3) { //if wrong input is entered 3 times then the program closes.
 		cout << "\nHello this app is our costumer database.\nPress 1 to enter a new customer.\nPress 2 to see a list of costumers.\nPress 3 to modify an existing customer.\nPress 0 to exit.\n";
-		cin.get(input);
-		cin.ignore(1000, '\n');
-		cin.clear();
+		cin.get(input); //grab only one character
+		FlushInputBuffer(); //clean out the buffer
 		if (input == '1')
 		{
-			AskForData(accounts);
+			AskForData(accounts); //call to AskForData function
 		}
 		else if (input == '2')
 		{
-			ShowData(accounts);
+			ShowData(accounts); //call to ShowData function
 		}
 		else if (input == '3') //option added 2/22 by David
 		{
-			ModifyCustomer(accounts);
+			ModifyCustomer(accounts); // call to ModifyCustomer function
 		}
 		else if (input == '0')
 		{
