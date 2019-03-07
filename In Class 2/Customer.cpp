@@ -1,3 +1,4 @@
+// Class by Robyn Collins
 #include "Customer.h"
 
 Customer::Customer(std::string name, double price)
@@ -6,28 +7,31 @@ Customer::Customer(std::string name, double price)
 	setPrice(price);
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Code by Bonnie Rogers - As If Logic
 // this function takes in an int and changes it to a float. Makes sure price won't be set to less than 0.
-void Customer::convertPrice(int ChangedPrice) {  
+void Customer::convertPrice(int ChangedPrice) 
+{  
 	float tempFloat = static_cast<float>(ChangedPrice);
 	
-	float tempPrice = price + tempFloat;  //Code by Bonnie Rogers - As If Logic
+	float addedPrice = price + tempFloat;  
 	
 	//checking overflow
 	//checks to see if incoming number is positive and if addition is less than original incoming number or original price
-	if(tempFloat > 0 && tempPrice < tempFloat || tempPrice < getPrice()) 
+	if(tempFloat > 0 && addedPrice < tempFloat || addedPrice < getPrice()) 
 	{
 		std::cout << "Overflow error: Not changing price.";
 		return;
 	}
 	//check if incoming number is negative to check if addition is more than incoming number or original price
-	if(tempFloat < 0 && tempPrice > tempFloat || tempPrice > getPrice())
+	if(tempFloat < 0 && addedPrice > tempFloat || addedPrice > getPrice())
 	{
 		std::cout << "Overflow error: Not changing price.";
 		return;
 	}
 	
-	
-	if(tempPrice < 0)
+	//check to make sure price doesn't fall bellow 0 - NO REFUNDS >:(
+	if(addedPrice < 0)
 	{
 		std::cout << "Error: Price input causes price to be less than 0.\n";
 		return;
@@ -38,7 +42,7 @@ void Customer::convertPrice(int ChangedPrice) {
 		setPrice(tempPrice);
 	}
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void Customer::setName(std::string input)
 {
