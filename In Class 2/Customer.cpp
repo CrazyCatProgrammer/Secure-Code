@@ -12,7 +12,7 @@ Customer::Customer(std::string name, double price)
 // this function takes in an int and changes it to a float. Makes sure price won't be set to less than 0.
 void Customer::convertPrice(int ChangedPrice) 
 {  
-	float tempFloat = static_cast<float>(ChangedPrice);
+	float tempFloat = static_cast<float>(ChangedPrice); // Conversion Rank
 	
 	float addedPrice = price + tempFloat;  
 	
