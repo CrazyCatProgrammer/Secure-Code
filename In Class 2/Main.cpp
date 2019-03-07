@@ -56,8 +56,8 @@ bool inRange(int low, int high, int price)	//should unsigned be int?
 //inRange(0, 99999, tempPrice); //if price is too big or too small than price is set 0? where do put this?***
 
 
-//precondition:
-//postcondition:
+//precondition: Pass in a Customer Reward reference to print data
+//postcondition: Will print all Data as well as the Best customer. Returns Nothing.
 void ShowData(CustomerRewards &accounts) //reworked by David
 {
 	cout << "Showing Customer Data:\n";
@@ -97,7 +97,7 @@ void AskForData(CustomerRewards &accounts) {
 //postcondition: IF customer exsists in the list then modify the price
 void ModifyCustomer(CustomerRewards &accounts) { //Added 2/22 by David
 	//code to access modify from class goes here
-	char tempPrice[100]; //6 characters 
+	char tempPrice[100]; //100 characters 
 	char input = 48;
 	int custNum = 0;
 	unsigned int priceToModify = 0;
@@ -140,11 +140,11 @@ void ModifyCustomer(CustomerRewards &accounts) { //Added 2/22 by David
 		if (priceToModify <= 2147483647) { //check to ensure price is in range
 			negPrice = priceToModify; //implicit conversion from unsigned to signed
 			negPrice = -1 * negPrice; //make price negative to pass in
-			tempCust.convertPrice(negPrice);
+			tempCust.convertPrice(negPrice); //call customer method to alter price
 		}
 	}
-	accounts.removeOne(custNum);
-	accounts.add(tempCust);
+	accounts.removeOne(custNum); //Removes old instance of the customer, because the class uses objects, rather than references, to modify
+	accounts.add(tempCust);	     //re-add the customer to ensure it remains in the lsit.
 }
 
 int main() {
