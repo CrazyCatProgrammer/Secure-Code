@@ -10,7 +10,7 @@ Customer::Customer(std::string name, double price)
 void Customer::convertPrice(int ChangedPrice) {  
 	float tempFloat = static_cast<float>(ChangedPrice);
 	
-	float tempPrice = price + tempFloat;  //logic checking by Bonnie Rogers
+	float tempPrice = price + tempFloat;  //Code by Bonnie Rogers
 	
 	//checking overflow
 	//checks to see if incoming number is positive and if addition is less than original incoming number or original price
