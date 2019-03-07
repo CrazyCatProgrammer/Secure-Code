@@ -6,11 +6,20 @@ Customer::Customer(std::string name, double price)
 	setPrice(price);
 }
 
-void Customer::convertPrice(int ChangedPrice) {  // this function takes in an int and changes it to a float.
+// this function takes in an int and changes it to a float. Makes sure price won't be set to less than 0.
+void Customer::convertPrice(int ChangedPrice) {  
 	float tempFloat = static_cast<float>(ChangedPrice);
-
-	setPrice(price + tempFloat);
-
+	
+	float tempPrice = price + tempFloat;  //logic checking by Bonnie Rogers
+	if(tempPrice < 0)
+	{
+		cout << "Error: Price input causes price to be less than 0.\n";
+	}
+	else
+	{
+		cout << "Setting customer price to " << tempPrice << "\n";
+		setPrice(tempPrice);
+	}
 }
 
 
