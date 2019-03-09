@@ -1,7 +1,6 @@
-/* Assignment #1 (pre-test) code
+/* In Class #1  code
 * Started 1/31/2019
 *
-* Team members: David Bonney,
 *
 * Directions:
 *
@@ -62,7 +61,7 @@ void FlushInputBuffer()
 	while ((character = getchar()) != '\n' && character != EOF);
 }
 
-void ShowData(CustomerRewards &accounts) //reworked by David
+void ShowData(CustomerRewards &accounts) //reworked by David Bonney
 {
 	cout << "Showing Customer Data:\n";
 	accounts.printAll();
@@ -95,12 +94,12 @@ void AskForData(CustomerRewards &accounts) {
 	FlushInputBuffer();
 }
 
-void ModifyCustomer(CustomerRewards &accounts) { //Added 2/22 by David
+void ModifyCustomer(CustomerRewards &accounts) { //Added 2/22 by David Bonney
 	//code to access modify from class goes here
 	char tempPrice[100]; //6 characters 
 	char input = 48;
 	int custNum = 0;
-	unsigned int priceToModify = 0;
+	unsigned int priceToModify = 0; // Unsigned integer types. by David Bonney
 	int negPrice = 0;
 	Customer tempCust;
 	while (custNum <= 0 || custNum > accounts.getUsed()) { //check if selected customer to modify is within the list
@@ -125,15 +124,15 @@ void ModifyCustomer(CustomerRewards &accounts) { //Added 2/22 by David
 			priceToModify = stoul(tempPrice, nullptr, 0); //will throw exceptions based on bad values
 		}
 		catch (invalid_argument) {
-			cout << "\nInvalid Input, please try again.\n";
+			cout << "\nInvalid Input, please try again.\n"; //
 		}
 		catch (out_of_range) {
-			cout << "\nNumber too big! Please try a smaller number.\n";
+			cout << "\nNumber too big! Please try a smaller number.\n"; //Integer Overflow catches if number would be too big -David Bonney
 		}
 	}
 	tempCust = accounts[custNum];
 	if (input == '1')
-		tempCust.convertPrice(priceToModify);
+		tempCust.convertPrice(priceToModify); //Converion from Signed integer types. 
 	else if (input == '2') {
 		if (priceToModify <= 2147483647) { //check to ensure price is in range
 			negPrice = priceToModify; //implicit conversion from unsigned to signed
@@ -163,7 +162,7 @@ int main() {
 		{
 			ShowData(accounts);
 		}
-		else if (input == '3') //option added 2/22 by David
+		else if (input == '3') //option added 2/22 by David Bonney
 		{
 			ModifyCustomer(accounts);
 		}

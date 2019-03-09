@@ -22,7 +22,7 @@ public:
   //Member Functions
 		//getters & setters
 
-	void convertPrice(int);//ROBYN DID A THING :D, this is to take in an int and convert to float.
+	void convertPrice(int);// signed integer conversion, this is to take in an int and convert to float. -Robyn Collins
 
 
 
