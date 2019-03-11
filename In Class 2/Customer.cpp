@@ -1,4 +1,11 @@
-// Class by Robyn Collins
+/*
+ * Customer.cpp
+ *
+ *  Last Edited: March 5, 2019
+ *
+ *      Author: David Bonney, Robyn Collins, Bonnie Rogers
+ */
+
 #include "Customer.h"
 
 Customer::Customer(std::string name, double price)
@@ -10,7 +17,7 @@ Customer::Customer(std::string name, double price)
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Code by Bonnie Rogers - As If Logic
 // this function takes in an int and changes it to a float. Makes sure price won't be set to less than 0.
-void Customer::convertPrice(int ChangedPrice) 
+void Customer::convertPrice(int ChangedPrice) // convert price added by Robyn
 {  
 	float tempFloat = static_cast<float>(ChangedPrice); // Conversion Rank
 	
@@ -46,27 +53,32 @@ void Customer::convertPrice(int ChangedPrice)
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void Customer::setName(std::string input)
+//takes input variable "name"
+void Customer::setName(std::string input) // added by Robyn 3/5
 {
 	name = input;
 }
 
-void Customer::setPrice(float input)
+//takes input variable "input"
+void Customer::setPrice(float input)// added by Robyn 3/5
 {
 	price = input;
 }
 
-void Customer::printName()
+//prints out name
+void Customer::printName()// added by Robyn 3/5
 {
 	std::cout << "Name: " << name << '\n';
 }
 
-void Customer::printPrice()
+//prints out price
+void Customer::printPrice()// added by Robyn 3/5
 {
 	std::cout << "Price: " << price << '\n';
 }
 
-void Customer::printAll()
+//prints all prices and customers
+void Customer::printAll()// added by Robyn 3/5
 {
 	printName();
 	printPrice();

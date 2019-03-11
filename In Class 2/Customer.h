@@ -25,7 +25,7 @@ public:
 
 	//precondition variable convertPrice should be an int
 	//postcondition convertPrice should end as a float
-	void convertPrice(int);//ROBYN DID A THING :D, this is to take in an int and convert to float.
+	void convertPrice(int);// this is to take in an int and convert to float - added by Robyn
 
 
 
