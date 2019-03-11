@@ -18,12 +18,14 @@ void Customer::convertPrice(int ChangedPrice)
 	
 	//checking overflow
 	//checks to see if incoming number is positive and if addition is less than original incoming number or original price
+	//as-if overflow check. Code by Bonnie, assisted by David
 	if(tempFloat > 0 && addedPrice < tempFloat || addedPrice < getPrice()) 
 	{
 		std::cout << "Overflow error: Not changing price.";
 		return;
 	}
 	//check if incoming number is negative to check if addition is more than incoming number or original price
+	//as-if overflow check. Code by Bonnie, assisted by David
 	if(tempFloat < 0 && addedPrice > tempFloat || addedPrice > getPrice())
 	{
 		std::cout << "Overflow error: Not changing price.";
