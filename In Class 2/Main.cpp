@@ -51,7 +51,7 @@ void FlushInputBuffer()			// function for cleaning out the buffer
 //postcondition: price should be between the low and high digits or it gets ignored.
 bool inRange(int low, int high, int price)	//should unsigned be int? 
 {
-	return  ((price - low) <= (high - low));
+	return  ((price - low) <= (high - low) && price >= low);
 }
 //inRange(0, 99999, tempPrice); //if price is too big or too small than price is set 0? where do put this?***
 
@@ -99,22 +99,30 @@ void ModifyCustomer(CustomerRewards &accounts) { //Added 2/22 by David
 	//code to access modify from class goes here
 	char tempPrice[100]; //100 characters 
 	char input = 48; //initialize to ASCII '0'
-	int custNum = 0; 
+	int custNum = 0; //initialize to 0 to keep inRange working
 	unsigned int priceToModify = 0;
 	int negPrice = 0;
 	Customer tempCust;
 	
-	while (custNum <= 0 || custNum > accounts.getUsed()) { //check if selected customer to modify is within the list
-		while (input < 49 || input > 57) { //check if inputted value falls between 1 and 9 in ASCII codes, also checking in range.
-			cout << "Which customer do you want to modify?";
-			cin.get(input); //will only get 1 character
-			cin.ignore(1000, '\n');
+	while (!(inRange(1, accounts.getUsed(), custNum))) { //check if selected customer to modify is within the list (Thank you Robyn for range checker!)
+		cout << "Which customer do you want to modify?"; //loop modified 3/11 by David Bonney to include range checking and allow multi-digit customer number
+		fgets(tempPrice, 100, stdin);
+		try { 
+			custNum = stoul(tempPrice, nullptr, 0); // will throw exceptions based on bad values, transforming tempPrice into an int
+			//stoul = string to unsigned long
 		}
-		custNum = (input - '0'); //subtract char value of 0 to make the cust num into an integer - customer 10?
+		catch (invalid_argument) {
+			cout << "\nInvalid Input, please try again.\n";
+		}
+		catch (out_of_range) {
+			cout << "\nNumber too big! Please try a smaller number.\n";
+		}
 	}
 	custNum--; //reduce by 1 to prevent an off-by-one error later
 	
-	input = 48; // reset to ASCII '0'
+	for(int i = 0; i < 100; i++) //added 3/11 by David Bonney to keep tempPrice c-string secure and reset
+	       tempPrice[i] = \0; //reset contents of tempPrice
+	
 	while (input < 49 || input > 50) { //check if inputted value is 1 or 2 in ASCII codes
 		cout << "Do you want to add (Input 1) or subtract (Input 2) a number from the customer?\n";
 		cin.get(input); //will only get 1 character
