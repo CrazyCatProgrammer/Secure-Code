@@ -53,10 +53,15 @@ void CustomerRewards::free()
 void CustomerRewards::addMemory(int slots)
 {
 	max += slots;
-	Customer* tmpptr = new Customer[max];
-	std::copy(data, data + used, tmpptr);
-	free();
-	data = tmpptr;
+	if(max >=0){ //overflow protection check added by David Bonney 3/11
+		Customer* tmpptr = new Customer[max];
+		std::copy(data, data + used, tmpptr);
+		free();
+		data = tmpptr;
+	}
+	else
+		std::cout << "Too many Customers, please create a new list.\n";
+	
 }
 void CustomerRewards::cleanup()
 {
