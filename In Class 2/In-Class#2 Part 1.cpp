@@ -32,11 +32,13 @@
 
 #define fstackprotectorall //stack canary 
 
-#include <iostream>
+//#include "stdafx.h"    // 
+
+#include <iostream>  // for cout and basic inputs and outputs. Done by Paul Grubb.
 
 #include <stdio.h>
 
-#include <cmath>
+#include <cmath>    // for the Random Number Gen. Done by Paul Grubb.
 
 #include <math.h>
 
@@ -60,19 +62,19 @@ class Class					//Done by Paul Grubb for In-Class 2.
 
 public:
 
-	int array[20];
+	int array[20];   // the array that holds all of the data for the program. Done by Paul Grubb.
 
 };
 
 
 
-void generate(Class&);
+void generate(Class&); // Function that generates the random numbers. Done by Paul Grubb.
 
-void print(Class&);
+void print(Class&); // Function that prints the numbers. Done by Paul Grubb.
 
-void sort(Class&);
+void sort(Class&); // Function that sort the numbers from largest to smallest. Done by Paul Grubb.
 
-int destroyArray(Class&);
+int destroyArray(Class&); // Function that zeros out all the data in the array. Done by Paul Grubb.
 
 
 
@@ -84,23 +86,23 @@ int main()
 
 {
 
-	Class Agr;							//Call the class
+	Class Agr;							//Call the class Done by Paul Grubb.
 
-	destroyArray(Agr);					//Ensure there is nothing within the class Array
+	destroyArray(Agr);					//Ensure there is nothing within the class Array. Done by Paul Grubb.
 
-	generate(Agr);						//Generate the array and list of random numbers from 0-99
+	generate(Agr);						//Generate the array and list of random numbers from 0-99. Done by Paul Grubb.
 
-	print(Agr);							//Prints out the array
-	
-	sort(Agr);							//Sorts the array from largest to smallest numbers
+	print(Agr);							//Prints out the array. Done by Paul Grubb.
 
-	print(Agr);							//Prints the sorted array
+	sort(Agr);							//Sorts the array from largest to  smallest numbers Done by Paul Grubb.
 
-	destroyArray(Agr);					//Destroys array and its contents
-	
+	print(Agr);							//Prints the sorted array Done by Paul Grubb.
 
-	//ending program
-	//character to end program
+	destroyArray(Agr);					//Destroys array and its contents Done by Paul Grubb.
+
+
+										//ending program
+										//character to end program
 
 	cout << "End Program - Press any key to continue... ";
 
@@ -118,7 +120,7 @@ int main()
 
 int destroyArray(Class& Arg) {							//Done by Paul Grubb for In-Class 2.
 
-	for (int i = 0; i < 20; i++) { Arg.array[i] = 0; }
+	for (int i = 0; i < 20; i++) { Arg.array[i] = 0; } // zeros out the array and removes data. Done by Paul Grubb.
 
 	return 0;
 
@@ -135,14 +137,14 @@ void generate(Class& Arg)								//Done by Paul Grubb for In-Class 2.
 
 	cout << "Generating numbers and putting into array...\n";
 
-	int num = 1;
+	int num = 1; // int to hold generated numbers. Done by Paul Grubb.
 
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < 20; i++) // for loop that loops though and generates the numbers. Done by Paul Grubb.
 
 	{
-	
-		num = rand() % 105;
-		if( i <= 99 && i >= 0){     //Range is from 0-99 for In-Class #2. Done by Carson Sharpless
+
+		num = rand() % 105;  // ran
+		if (i <= 99 && i >= 0) {     //Range is from 0-99 for In-Class #2. Done by Carson Sharpless
 			Arg.array[i] = num;
 		}
 		else {						//Example of Verifiably in Range Operation for In-Class #2. Done By Carson Sharpless
@@ -162,15 +164,15 @@ void print(Class& Arg)
 
 {
 
-	cout << "Printing...\n";
+	cout << "Printing...\n"; //Done by Paul Grubb.
 
 
 
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < 20; i++) // loops though array and prints array. Done by Paul Grubb.
 	{
-		if( Arg.array[i] >= 0 && Arg.array[i] <= 99)	//Post condition testing, ensure all integers in array are withiin range for In-Class #2. Done by Carson Sharpless.
-		{   													
-		cout << Arg.array[i] << " ";
+		if (Arg.array[i] >= 0 && Arg.array[i] <= 99)	//Post condition testing, ensure all integers in array are withiin range for In-Class #2. Done by Carson Sharpless.
+		{
+			cout << Arg.array[i] << " "; // prints contents of array. Done by Paul Grubb.
 		}
 	}
 
@@ -185,32 +187,32 @@ void print(Class& Arg)
 // Arg.array is array to sort
 
 
-void sort(Class& Arg){									//Done by Paul Grubb for In-Class 2.
+void sort(Class& Arg) {									//Done by Paul Grubb for In-Class 2.
 
-		for (int i = 0; i <= 19; i++)
+	for (int i = 0; i <= 19; i++) // loops though array of numbers checking for if smaller number is before a larger number. Done by Paul Grubb.
+
+	{
+
+		for (int j = i + 1; j <= 20; j++) //loops though array of numbers checking for if smaller number is before a larger number. Done by Paul Grubb.
 
 		{
 
-			for (int j = i + 1; j <= 20; j++)
+			int temp = 0; // temp value to hold number while being switched 
+
+			if (Arg.array[i] < Arg.array[j]) // checks the value of the two number and if true sorts those numbers. Done by Paul Grubb.
 
 			{
 
-				int temp = 0;
+				temp = Arg.array[i];				//Temporary stores the smaller number. Done by Paul Grubb.
 
-				if (Arg.array[i] < Arg.array[j])
+				Arg.array[i] = Arg.array[j];		//Puts the large number in place of the smaller. Done by Paul Grubb.
 
-				{
-
-					temp = Arg.array[i];				//Temporary stores the smaller number
-
-					Arg.array[i] = Arg.array[j];		//Puts the large number in place of the smaller
-	
-					Arg.array[j] = temp;				//Sets the small number back to where the large number was
-
-				}
+				Arg.array[j] = temp;				//Sets the small number back to where the large number was. Done by Paul Grubb.
 
 			}
 
 		}
 
 	}
+
+}
