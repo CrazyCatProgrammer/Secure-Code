@@ -260,7 +260,7 @@ int sprintf(char *string);
 void FlushInputBuffer()			// function for cleaning out the buffer
 {
     char character;
-    cout << "Cleaning input buffer, please hit 'return' to continue.";
+    cout << "Cleaning input buffer, please hit 'return' to continue.\n";
     while ((character = getchar()) != '\n' && character != EOF);
 }
 
@@ -377,45 +377,47 @@ void ModifyCustomer(CustomerRewards &accounts) { //Added 2/22 by David
 }
 
 int main() {
-    CustomerRewards accounts;
-    char input = '3'; //initialize with an innocent value
-    char buffer[200]; // set buffer size for output stream  - Robyn 3/24/19
-    const char* s = "Hello and Welcome to the program!"; //output for output stream, is const because there will be an error otherwise. - Robyn 3/24/19
-    int j = snprintf(buffer, 400, "%s\n", s); //formatting output of output stream example - Robyn 3/24/19
-    int errorCount = 0; //set error count to zero
-    while (errorCount < 3) { //if wrong input is entered 3 times then the program closes.
-        printf(buffer, "string:\n%s\ncharacter count = %d\n", j); // Output Stream Example Added by Robyn 3/24/19
-        cout << "\nHello this app is our costumer database.\nPress 1 to enter a new customer.\nPress 2 to see a list of costumers.\nPress 3 to modify an existing customer.\nPress 4 to run the function from Part 1 of Assignment.\nPress 0 to exit.\n";
-        cin.get(input); //grab only one character
-        FlushInputBuffer(); //clean out the buffer
-        if (input == '1')
-        {
-            AskForData(accounts); //call to AskForData function
-        }
-        else if (input == '2')
-        {
-            ShowData(accounts); //call to ShowData function
-        }
-        else if (input == '3') //option added 2/22 by David
-        {
-            ModifyCustomer(accounts); // call to ModifyCustomer function
-        }
-        else if (input == '4') //option added 3/11 by David to consolidate both parts
-        {
-            part1main(); // call to part 1 of assignmnet
-        }
-        else if (input == '0')
-        {
-            return 0; //0 is a proper exit
-        }
-        else //if anything unexpected, post error thing
-        {
-            errorCount++;
-            cout << "There was an error with that input, please try again.\n";
-        }
+	CustomerRewards accounts;
+	char input = '5'; //initialize with an innocent value
+	char buffer[200]; // set buffer size for output stream  - Robyn 3/24/19
+	const char* s = "Hello and Welcome to the program!"; //output for output stream, is const because there will be an error otherwise. - Robyn 3/24/19
+	int j = snprintf(buffer, 200, "%.184s\n", s); //formatting output of output stream example - Robyn 3/24/19
+												  //"%.184s" added by David Bonney 3/24 to prevent buffer overflow on 200 size buffer (184 = 200-16)
+	int errorCount = 0; //set error count to zero
+	while (errorCount < 3) { //if wrong input is entered 3 times then the program closes.
+		FlushInputBuffer(); //clean out the buffer
+		printf(buffer, "string:\n%s\ncharacter count = %d\n", j); // Output Stream Example Added by Robyn 3/24/19
+		cout << "\nHello this app is our costumer database.\nPress 1 to enter a new customer.\nPress 2 to see a list of costumers.\nPress 3 to modify an existing customer.\nPress 4 to run the function from Part 1 of Assignment.\nPress 0 to exit.\n";
+		cin.get(input); //grab only one character
+		
+		if (input == '1')
+		{
+			AskForData(accounts); //call to AskForData function
+		}
+		else if (input == '2')
+		{
+			ShowData(accounts); //call to ShowData function
+		}
+		else if (input == '3') //option added 2/22 by David
+		{
+			ModifyCustomer(accounts); // call to ModifyCustomer function
+		}
+		else if (input == '4') //option added 3/11 by David to consolidate both parts
+		{
+			part1main(); // call to part 1 of assignmnet
+		}
+		else if (input == '0')
+		{
+			return 0; //0 is a proper exit
+		}
+		else //if anything unexpected, post error thing
+		{
+			errorCount++;
+			cout << "There was an error with that input, please try again.\n";
+		}
 
-    }
-    return -1; //-1 indicated bad exit
+	}
+	return -1; //-1 indicated bad exit
 }
 
 
