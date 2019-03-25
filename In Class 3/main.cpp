@@ -387,6 +387,14 @@ int main() {
 	while (errorCount < 3) { //if wrong input is entered 3 times then the program closes.
 		FlushInputBuffer(); //clean out the buffer
 		printf(buffer, "string:\n%s\ncharacter count = %d\n", j); // Output Stream Example Added by Robyn 3/24/19
+		
+		for(int x = 0; x < 200; x++)
+		{
+			buffer[x] = '/0';
+		}
+		j = '/0'; 
+		// clearing buffer and j variable to prevent incrimenting for overwrite - Bonnie Rogers 3/24/19
+		
 		cout << "\nHello this app is our costumer database.\nPress 1 to enter a new customer.\nPress 2 to see a list of costumers.\nPress 3 to modify an existing customer.\nPress 4 to run the function from Part 1 of Assignment.\nPress 0 to exit.\n";
 		cin.get(input); //grab only one character
 		
