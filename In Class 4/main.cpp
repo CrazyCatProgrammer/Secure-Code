@@ -13,14 +13,14 @@
 * Program 1: Carson, Bonnie
 * Program 2 : Robyn, David, Paul
 * New: Pre/post conditions added -by Robyn Collins
-*	   As if - by David Bonney
+*      As if - by David Bonney
 */
 
 /*
  * Project.cpp
  *  Created on:
  *      Author: Paul Grubb
- *		Edited by: Robyn Collins & David Bonney
+ *      Edited by: Robyn Collins & David Bonney
  * New: In range function
  */
 
@@ -52,7 +52,7 @@ using namespace std;
 
 // Description : generates a sequence of twenty random values between 0 and 99 in an array.
 
-//				 Print the sequence, sort the array, and print the sorted sequence.
+//               Print the sequence, sort the array, and print the sorted sequence.
 
 // Functions   : int generate(int string[20 length], constant int length) - Generates numbers to fill array
 
@@ -76,13 +76,14 @@ using namespace std;
 #include <cmath>    // for the Random Number Gen. Done by Paul Grubb.
 
 #include <math.h>
+#include <cstring>
 
 
 /////////////////////////////////////////// Function Call ///////////////////////////////////////////
 
 
 
-class Class					//Done by Paul Grubb for In-Class 2.
+class Class                 //Done by Paul Grubb for In-Class 2.
 
 {
 
@@ -112,19 +113,19 @@ int part1main()
 
 {
 
-    Class Agr;							//Call the class Done by Paul Grubb.
+    Class Agr;                          //Call the class Done by Paul Grubb.
 
-    destroyArray(Agr);					//Ensure there is nothing within the class Array. Done by Paul Grubb.
+    destroyArray(Agr);                  //Ensure there is nothing within the class Array. Done by Paul Grubb.
 
-    generate(Agr);						//Generate the array and list of random numbers from 0-99. Done by Paul Grubb.
+    generate(Agr);                      //Generate the array and list of random numbers from 0-99. Done by Paul Grubb.
 
-    print(Agr);							//Prints out the array. Done by Paul Grubb.
+    print(Agr);                         //Prints out the array. Done by Paul Grubb.
 
-    sort(Agr);							//Sorts the array from largest to  smallest numbers Done by Paul Grubb.
+    sort(Agr);                          //Sorts the array from largest to  smallest numbers Done by Paul Grubb.
 
-    print(Agr);							//Prints the sorted array Done by Paul Grubb.
+    print(Agr);                         //Prints the sorted array Done by Paul Grubb.
 
-    destroyArray(Agr);					//Destroys array and its contents Done by Paul Grubb.
+    destroyArray(Agr);                  //Destroys array and its contents Done by Paul Grubb.
 
 
     //ending program
@@ -144,7 +145,7 @@ int part1main()
 
 // Arg.array is the array to be destroyed
 
-int destroyArray(Class& Arg) {							//Done by Paul Grubb for In-Class 2.
+int destroyArray(Class& Arg) {                          //Done by Paul Grubb for In-Class 2.
 
     for (int i = 0; i < 20; i++) { Arg.array[i] = 0; } // zeros out the array and removes data. Done by Paul Grubb.
 
@@ -157,7 +158,7 @@ int destroyArray(Class& Arg) {							//Done by Paul Grubb for In-Class 2.
 // Arg.array is the array to be filled
 
 
-void generate(Class& Arg)								//Done by Paul Grubb for In-Class 2.
+void generate(Class& Arg)                               //Done by Paul Grubb for In-Class 2.
 
 {
 
@@ -173,9 +174,9 @@ void generate(Class& Arg)								//Done by Paul Grubb for In-Class 2.
         if (i <= 99 && i >= 0) {     //Range is from 0-99 for In-Class #2. Done by Carson Sharpless
             Arg.array[i] = num;
         }
-        else {						//Example of Verifiably in Range Operation for In-Class #2. Done By Carson Sharpless
-            num = 99;				//If number falls outside of the pre-set range (0-99), num is set to the max value.
-            Arg.array[i] = num;		//Then num is put into the array as the max value of the range.
+        else {                      //Example of Verifiably in Range Operation for In-Class #2. Done By Carson Sharpless
+            num = 99;               //If number falls outside of the pre-set range (0-99), num is set to the max value.
+            Arg.array[i] = num;     //Then num is put into the array as the max value of the range.
         }
     }
 
@@ -196,7 +197,7 @@ void print(Class& Arg)
 
     for (int i = 0; i < 20; i++) // loops though array and prints array. Done by Paul Grubb.
     {
-        if (Arg.array[i] >= 0 && Arg.array[i] <= 99)	//Post condition testing, ensure all integers in array are withiin range for In-Class #2. Done by Carson Sharpless.
+        if (Arg.array[i] >= 0 && Arg.array[i] <= 99)    //Post condition testing, ensure all integers in array are withiin range for In-Class #2. Done by Carson Sharpless.
         {
             cout << Arg.array[i] << " "; // prints contents of array. Done by Paul Grubb.
         }
@@ -213,7 +214,7 @@ void print(Class& Arg)
 // Arg.array is array to sort
 
 
-void sort(Class& Arg) {									//Done by Paul Grubb for In-Class 2.
+void sort(Class& Arg) {                                 //Done by Paul Grubb for In-Class 2.
 
     for (int i = 0; i <= 19; i++) // loops though array of numbers checking for if smaller number is before a larger number. Done by Paul Grubb.
 
@@ -229,11 +230,11 @@ void sort(Class& Arg) {									//Done by Paul Grubb for In-Class 2.
 
             {
 
-                temp = Arg.array[i];				//Temporary stores the smaller number. Done by Paul Grubb.
+                temp = Arg.array[i];                //Temporary stores the smaller number. Done by Paul Grubb.
 
-                Arg.array[i] = Arg.array[j];		//Puts the large number in place of the smaller. Done by Paul Grubb.
+                Arg.array[i] = Arg.array[j];        //Puts the large number in place of the smaller. Done by Paul Grubb.
 
-                Arg.array[j] = temp;				//Sets the small number back to where the large number was. Done by Paul Grubb.
+                Arg.array[j] = temp;                //Sets the small number back to where the large number was. Done by Paul Grubb.
 
             }
 
@@ -258,7 +259,7 @@ int sprintf(char *string);
 
 //precondition: Take in char from customerRewards
 //postcondition: clear out char? ***
-void FlushInputBuffer()			// function for cleaning out the buffer
+void FlushInputBuffer()         // function for cleaning out the buffer
 {
     char character;
     cout << "Cleaning input buffer, please hit 'return' to continue.\n";
@@ -268,7 +269,7 @@ void FlushInputBuffer()			// function for cleaning out the buffer
 //in Range Function
 //precondition: price should be within the high and low numbers
 //postcondition: price should be between the low and high digits or it gets ignored.
-bool inRange(int low, int high, int price)	//should unsigned be int?
+bool inRange(int low, int high, int price)  //should unsigned be int?
 {
     return  ((price - low) <= (high - low) && price >= low);
 }
@@ -282,19 +283,19 @@ void ShowData(CustomerRewards &accounts) //reworked by David
     cout << "Showing Customer Data:\n";
     //loop added 3/27 by David as example of dynamic stack usage with strings
     for (int i = 0; i < accounts.getUsed(); i++) { //loop to show all customers
-	char *custName;
-	custName = (char*)malloc(1+accounts[i].getName().size()); //allocate memory for string
-	strcpy(custName, accounts[i].getName().c_str());
-	char *custPrice;
-	custPrice = (char*)malloc(1+to_string(accounts[i].getPrice()).size()); //allocate memory for string
-	strcpy(custPrice, to_string(accounts[i].getPrice()).c_str());
-	int len = printf("%d) %s: %s%c", (i+1), custName, custPrice, '\n'); //display name
-	
-	free(custName); //free to de-allocate memory used
-	free(custPrice); //free to de-allocate memory used 
-	}
-	//accounts.printAll();
-	cout << "\nYour best Customer is:\n\n";
+        char *custName;
+        custName = (char*)malloc(1+accounts[i].getName().size()); //allocate memory for string
+        strcpy(custName, accounts[i].getName().c_str());
+        char *custPrice;
+        custPrice = (char*)malloc(1+to_string(accounts[i].getPrice()).size()); //allocate memory for string
+        strcpy(custPrice, to_string(accounts[i].getPrice()).c_str());
+        int len = printf("%d) %s: %s%c", (i+1), custName, custPrice, '\n'); //display name
+
+        free(custName); //free to de-allocate memory used
+        free(custPrice); //free to de-allocate memory used
+    }
+    //accounts.printAll();
+    cout << "\nYour best Customer is:\n\n";
     accounts.printBest();
 }
 
@@ -387,59 +388,59 @@ void ModifyCustomer(CustomerRewards &accounts) { //Added 2/22 by David
         }
     }
     accounts.removeOne(custNum); //Removes old instance of the customer, because the class uses objects, rather than references, to modify
-    accounts.add(tempCust);	     //re-add the customer to ensure it remains in the lsit.
+    accounts.add(tempCust);      //re-add the customer to ensure it remains in the lsit.
 }
 
 int main() {
-	CustomerRewards accounts;
-	char input = '5'; //initialize with an innocent value
-	char buffer[200]; // set buffer size for output stream  - Robyn 3/24/19
-	const char* s = "Hello and Welcome to the program!"; //output for output stream, is const because there will be an error otherwise. - Robyn 3/24/19
-	int j = snprintf(buffer, 200, "%.184s\n", s); //formatting output of output stream example - Robyn 3/24/19
-												  //"%.184s" added by David Bonney 3/24 to prevent buffer overflow on 200 size buffer (184 = 200-16)
-	int errorCount = 0; //set error count to zero
-	while (errorCount < 3) { //if wrong input is entered 3 times then the program closes.
-		
-		printf(buffer, "string:\n%s\ncharacter count = %d\n", j); // Output Stream Example Added by Robyn 3/24/19
-		
-		for(int x = 0; x < 200; x++)
-		{
-			buffer[x] = '/0';
-		}
-		j = '/0'; 
-		// clearing buffer and j variable to prevent incrimenting for overwrite - Bonnie Rogers 3/24/19
-		
-		cout << "\nHello this app is our costumer database.\nPress 1 to enter a new customer.\nPress 2 to see a list of costumers.\nPress 3 to modify an existing customer.\nPress 4 to run the function from Part 1 of Assignment.\nPress 0 to exit.\n";
-		cin.get(input); //grab only one character
-		FlushInputBuffer(); //clean out the buffer
-		if (input == '1')
-		{
-			AskForData(accounts); //call to AskForData function
-		}
-		else if (input == '2')
-		{
-			ShowData(accounts); //call to ShowData function
-		}
-		else if (input == '3') //option added 2/22 by David
-		{
-			ModifyCustomer(accounts); // call to ModifyCustomer function
-		}
-		else if (input == '4') //option added 3/11 by David to consolidate both parts
-		{
-			part1main(); // call to part 1 of assignmnet
-		}
-		else if (input == '0')
-		{
-			return 0; //0 is a proper exit
-		}
-		else //if anything unexpected, post error thing
-		{
-			errorCount++;
-			cout << "There was an error with that input, please try again.\n";
-		}
+    CustomerRewards accounts;
+    char input = '5'; //initialize with an innocent value
+    char buffer[200]; // set buffer size for output stream  - Robyn 3/24/19
+    const char* s = "Hello and Welcome to the program!"; //output for output stream, is const because there will be an error otherwise. - Robyn 3/24/19
+    int j = snprintf(buffer, 200, "%.184s\n", s); //formatting output of output stream example - Robyn 3/24/19
+    //"%.184s" added by David Bonney 3/24 to prevent buffer overflow on 200 size buffer (184 = 200-16)
+    int errorCount = 0; //set error count to zero
+    while (errorCount < 3) { //if wrong input is entered 3 times then the program closes.
 
-	}
-	return -1; //-1 indicated bad exit
+        printf(buffer, "string:\n%s\ncharacter count = %d\n", j); // Output Stream Example Added by Robyn 3/24/19
+
+        for(int x = 0; x < 200; x++)
+        {
+            buffer[x] = '0';
+        }
+        j = '0';
+        // clearing buffer and j variable to prevent incrimenting for overwrite - Bonnie Rogers 3/24/19
+
+        cout << "\nHello this app is our costumer database.\nPress 1 to enter a new customer.\nPress 2 to see a list of costumers.\nPress 3 to modify an existing customer.\nPress 4 to run the function from Part 1 of Assignment.\nPress 0 to exit.\n";
+        cin.get(input); //grab only one character
+        FlushInputBuffer(); //clean out the buffer
+        if (input == '1')
+        {
+            AskForData(accounts); //call to AskForData function
+        }
+        else if (input == '2')
+        {
+            ShowData(accounts); //call to ShowData function
+        }
+        else if (input == '3') //option added 2/22 by David
+        {
+            ModifyCustomer(accounts); // call to ModifyCustomer function
+        }
+        else if (input == '4') //option added 3/11 by David to consolidate both parts
+        {
+            part1main(); // call to part 1 of assignmnet
+        }
+        else if (input == '0')
+        {
+            return 0; //0 is a proper exit
+        }
+        else //if anything unexpected, post error thing
+        {
+            errorCount++;
+            cout << "There was an error with that input, please try again.\n";
+        }
+
+    }
+    return -1; //-1 indicated bad exit
 }
 
 
