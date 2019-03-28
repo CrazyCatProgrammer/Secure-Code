@@ -168,6 +168,8 @@ int addThem(int numargs, ...) {
 
     return sum;
 }
+//end of Variadic Function
+
 // Arg.array is the array to be destroyed
 
 int destroyArray(Class& Arg) {                          //Done by Paul Grubb for In-Class 2.
