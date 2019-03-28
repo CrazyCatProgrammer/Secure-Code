@@ -283,10 +283,10 @@ void ShowData(CustomerRewards &accounts) //reworked by David
     //loop added 3/27 by David as example of dynamic stack usage with strings
     for (int i = 0; i < accounts.getUsed(); i++) { //loop to show all customers
 	char *custName;
-	custName = (char*)malloc(accounts[i].getName().size()); //allocate memory for string
+	custName = (char*)malloc(1+accounts[i].getName().size()); //allocate memory for string
 	strcpy(custName, accounts[i].getName().c_str());
 	char *custPrice;
-	custPrice = (char*)malloc(to_string(accounts[i].getPrice()).size()); //allocate memory for string
+	custPrice = (char*)malloc(1+to_string(accounts[i].getPrice()).size()); //allocate memory for string
 	strcpy(custPrice, to_string(accounts[i].getPrice()).c_str());
 	int len = printf("%d) %s: %s%c", (i+1), custName, custPrice, '\n'); //display name
 	
