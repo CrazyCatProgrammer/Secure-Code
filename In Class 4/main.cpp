@@ -32,6 +32,7 @@
 #include <stdint.h>
 #include<stdio.h>
 #include<stdlib.h>
+#pragma warning(disable : 4996)
 using namespace std;
 
 
@@ -279,8 +280,21 @@ bool inRange(int low, int high, int price)	//should unsigned be int?
 void ShowData(CustomerRewards &accounts) //reworked by David
 {
     cout << "Showing Customer Data:\n";
-    accounts.printAll();
-    cout << "\nYour best Customer is:\n\n";
+    //loop added 3/27 by David as example of dynamic stack usage with strings
+    for (int i = 0; i < accounts.getUsed(); i++) { //loop to show all customers
+	char *custName;
+	custName = (char*)malloc(accounts[i].getName().size()); //allocate memory for string
+	strcpy(custName, accounts[i].getName().c_str());
+	char *custPrice;
+	custPrice = (char*)malloc(to_string(accounts[i].getPrice()).size()); //allocate memory for string
+	strcpy(custPrice, to_string(accounts[i].getPrice()).c_str());
+	int len = printf("%d) %s: %s%c", (i+1), custName, custPrice, '\n'); //display name
+	
+	free(custName); //free to de-allocate memory used
+	free(custPrice); //free to de-allocate memory used 
+	}
+	//accounts.printAll();
+	cout << "\nYour best Customer is:\n\n";
     accounts.printBest();
 }
 
@@ -385,7 +399,7 @@ int main() {
 												  //"%.184s" added by David Bonney 3/24 to prevent buffer overflow on 200 size buffer (184 = 200-16)
 	int errorCount = 0; //set error count to zero
 	while (errorCount < 3) { //if wrong input is entered 3 times then the program closes.
-		FlushInputBuffer(); //clean out the buffer
+		
 		printf(buffer, "string:\n%s\ncharacter count = %d\n", j); // Output Stream Example Added by Robyn 3/24/19
 		
 		for(int x = 0; x < 200; x++)
@@ -397,7 +411,7 @@ int main() {
 		
 		cout << "\nHello this app is our costumer database.\nPress 1 to enter a new customer.\nPress 2 to see a list of costumers.\nPress 3 to modify an existing customer.\nPress 4 to run the function from Part 1 of Assignment.\nPress 0 to exit.\n";
 		cin.get(input); //grab only one character
-		
+		FlushInputBuffer(); //clean out the buffer
 		if (input == '1')
 		{
 			AskForData(accounts); //call to AskForData function
