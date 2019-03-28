@@ -32,6 +32,7 @@
 #include <stdint.h>
 #include<stdio.h>
 #include<stdlib.h>
+#include <stdarg.h> // include for variadic function
 #pragma warning(disable : 4996)
 using namespace std;
 
@@ -142,7 +143,31 @@ int part1main()
 
 
 /////////////////////////////////////////// Functions ///////////////////////////////////////////
+//declaration of variadic definition added by Paul Grubb and Robyn Collins 3/27/19
+int addThem(int numargs, ...) {
+    va_list listPointer; //create variadic function list
 
+    va_start( listPointer, numargs ); //set function to take in the amount then the numbers it saves.
+
+
+    int sum = 0;
+    for( int i = 0 ; i < numargs; i++ ) //loop to add numbers to variadic list.
+    {
+
+        int arg = va_arg( listPointer, int ); // set type of argument for list.
+
+        printf( "    Arg is %d\n", arg );
+
+        sum += arg;
+    }
+
+    printf("--");
+    printf("end of argument list\n\n");
+
+    va_end( listPointer ); // clean up before function returns
+
+    return sum;
+}
 // Arg.array is the array to be destroyed
 
 int destroyArray(Class& Arg) {                          //Done by Paul Grubb for In-Class 2.
@@ -391,6 +416,8 @@ void ModifyCustomer(CustomerRewards &accounts) { //Added 2/22 by David
     accounts.add(tempCust);      //re-add the customer to ensure it remains in the lsit.
 }
 
+
+
 int main() {
     CustomerRewards accounts;
     char input = '5'; //initialize with an innocent value
@@ -410,7 +437,13 @@ int main() {
         j = '0';
         // clearing buffer and j variable to prevent incrimenting for overwrite - Bonnie Rogers 3/24/19
 
+        printf("Calling 'addThem( 3, 2, 45, 24 );' . . .\n"); //variadic function
+        addThem( 3, 2, 45, 24 );
+
+        printf("Calling 'addThem( 8,   13, 2836, 73, 44, 59, 64, 37, 80 );' . . .\n"); // variadic function
+        addThem( 8,   13, 2836, 73, 44, 59, 64, 37, 80 );
         cout << "\nHello this app is our costumer database.\nPress 1 to enter a new customer.\nPress 2 to see a list of costumers.\nPress 3 to modify an existing customer.\nPress 4 to run the function from Part 1 of Assignment.\nPress 0 to exit.\n";
+
         cin.get(input); //grab only one character
         FlushInputBuffer(); //clean out the buffer
         if (input == '1')
@@ -444,3 +477,5 @@ int main() {
 }
 
 
+//variadic declaration
+int addThem( int numargs, ... );
