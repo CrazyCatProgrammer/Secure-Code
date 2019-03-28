@@ -168,8 +168,6 @@ int addThem(int numargs, ...) {
 
     return sum;
 }
-//end of Variadic Function
-
 // Arg.array is the array to be destroyed
 
 int destroyArray(Class& Arg) {                          //Done by Paul Grubb for In-Class 2.
@@ -284,6 +282,7 @@ void FlushInputBuffer(CustomerRewards);
 
 int sprintf(char *string);
 
+// dynamic use of stack - Coded by David Bonney - Reviewed by Bonnie Rogers //
 //precondition: Take in char from customerRewards
 //postcondition: clear out char? ***
 void FlushInputBuffer()         // function for cleaning out the buffer
@@ -292,6 +291,7 @@ void FlushInputBuffer()         // function for cleaning out the buffer
     cout << "Cleaning input buffer, please hit 'return' to continue.\n";
     while ((character = getchar()) != '\n' && character != EOF);
 }
+// end dynamic use of stack //
 
 //in Range Function
 //precondition: price should be within the high and low numbers
@@ -439,13 +439,15 @@ int main() {
         j = '0';
         // clearing buffer and j variable to prevent incrimenting for overwrite - Bonnie Rogers 3/24/19
 
-        printf("Calling 'addThem( 3, 2, 45, 24 );' . . .\n"); //variadic function
+        //variadic function added by Paul Grubb and Robyn Collins 3/27/19
+        printf("Calling 'addThem( 3, 2, 45, 24 );' . . .\n"); 
         addThem( 3, 2, 45, 24 );
 
         printf("Calling 'addThem( 8,   13, 2836, 73, 44, 59, 64, 37, 80 );' . . .\n"); // variadic function
         addThem( 8,   13, 2836, 73, 44, 59, 64, 37, 80 );
         cout << "\nHello this app is our costumer database.\nPress 1 to enter a new customer.\nPress 2 to see a list of costumers.\nPress 3 to modify an existing customer.\nPress 4 to run the function from Part 1 of Assignment.\nPress 0 to exit.\n";
-
+        //end variadic function
+        
         cin.get(input); //grab only one character
         FlushInputBuffer(); //clean out the buffer
         if (input == '1')
