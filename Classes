@@ -1,0 +1,49 @@
+
+
+classes idea
+
+Customer 
+{
+int UID
+string firstName
+string lastName
+string midInt
+address homeAddress
+string cellPhone
+string homePhone
+string email
+int prefMethodOfContact (1 email, 2 home, 3 cell, 4 mail)
+customerFlightInfo name
+}
+
+address 
+{
+string streetAddress
+string aptNum
+string city
+string state
+string zip
+}
+
+creditCardPayment 
+{
+string creditCardNum
+string expDate
+string securityCode
+}
+
+flightInfo
+{
+int flightUID
+string destFrom
+string destTo
+string destStop
+bool direct
+bool stop
+bool non-stop
+}
+
+customerFlightInfo
+{
+
+}
