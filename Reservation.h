@@ -18,6 +18,7 @@ public:
 
 	//getters
 	std::string getDestination() { return destination; }
+	std::string getQuality() { return quality; }
 	bool getRoundTrip() { return roundTrip; }
 	bool getNonStop() { return nonStop; }
 	int getBags() { return bags; }
@@ -25,6 +26,7 @@ public:
 	int getUsed() { return used; }
 	//setters
 	void setDestination(std::string destIn) { destination = destIn; }
+	void setQuality(std::string qualityIn) { quality = qualityIn; }
 	void setRoundTrip(bool roundTripIn) { roundTrip = roundTripIn; }
 	void setNonStop(bool nonStopIn) { nonStop = nonStopIn; }
 	void setBags(int bagsIn) { bags = bagsIn; }
@@ -35,6 +37,7 @@ public:
 
 private:
 	std::string destination; //to-from
+	std::string quality; //type of flight (economy, first class, etc.)
 	bool roundTrip; //bool because is either one-way or round trip. True indicates round trip, while false is one way
 	bool nonStop; //bool for nonstop or has layovers
 	int bags; //number of checked bags
