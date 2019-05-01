@@ -59,11 +59,11 @@ int priceCalc(Person p, Reservation r)
 	}
 
 	// checking seat class
-	if (p.getseatClass() == "Economy")
+	if (r.getQuality() == "Economy")
 		finalPrice += economyClass;
-	if (p.getseatClass() == "Business")
+	if (r.getQuality() == "Business")
 		finalPrice += businessClass;
-	if (p.getseatClass() == "First")
+	if (r.getQuality() == "First")
 		finalPrice += firstClass;
 
 	//check if round trip. If it isn't, is a one way flgiht
