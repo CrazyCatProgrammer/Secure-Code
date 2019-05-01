@@ -5,7 +5,7 @@
 SecureGui::SecureGui(QWidget *parent) //constructor
 	: QMainWindow(parent)
 {
-	ui.setupUi(this);
+	ui->setupUi(this);
 }
 
 void SecureGui::on_pushButton_clicked()
