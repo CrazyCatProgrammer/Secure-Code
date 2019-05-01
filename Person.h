@@ -23,8 +23,7 @@ public:
 	std::string getAccomidations() { return accomidations; }
 	int getPhoneNumber() { return phoneNumber; }
 	std::string getEmail() { return email; }
-	std::string getseatClass() { return seatClass; }
-	std::string getseatSpot() { return seatSpot; }
+	
 	//setters
 	void setFirstName(std::string nameIn) { firstName = nameIn; }
 	void setLastName(std::string nameIn) { lastName = nameIn; }
@@ -34,9 +33,7 @@ public:
 	void setAccomidations(std::string accIn) { accomidations = accIn; }
 	void setPhoneNumber(int phoneIn) { phoneNumber = phoneIn; }
 	void setEmail(std::string emailIn) { email = emailIn; }
-	void setseatClass(std::string seatIn) { seatClass = seatIn; }
-	void setseatSpot(std::string seatIn) { seatSpot = seatIn; }
-	
+		
 private:
 	std::string firstName;
 	std::string lastName;
@@ -46,8 +43,7 @@ private:
 	std::string accomidations;
 	int phoneNumber;
 	std::string email;
-	std::string seatClass; //first class, coach, or economoy
-	std::string seatSpot; //window, middle, or aisle
+	
 };
 
 #endif
