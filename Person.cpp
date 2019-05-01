@@ -12,7 +12,6 @@ Person::Person()
 	accomidations = "";
 	phoneNumber = 0;
 	email = "";
-	seatClass = "";
-	seatSpot = "";
+
 }
 
