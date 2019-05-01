@@ -10,6 +10,7 @@ Reservation::Reservation()
 	bags = 0;
 	max = 0;
 	used = 0;
+	people = NULL;
 }
 
 
